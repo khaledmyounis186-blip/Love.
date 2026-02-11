@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Love Story ❤️</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg,#b3002d,#ff4d6d);
+      color:white;
+      text-align:center;
+    }
+    .page{
+      display:none;
+      min-height:100vh;
+      padding:20px;
+      box-sizing:border-box;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 90%;
+      text-align: center;
+    }
+    .active{display:block;}
+    button{
+      background:#ff4d6d;
+      border:none;
+      padding:10px 25px;
+      color:white;
+      font-size:16px;
+      border-radius:25px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+    .heart{font-size:60px;}
+    .count{
+      font-size:20px;
+      font-weight:bold;
+      color:white;
+      text-shadow: 1px 1px 4px black;
+      margin:15px 0;
+    }
+    input{
+      padding:10px;
+      border-radius:15px;
+      border:none;
+      text-align:center;
+      font-size:14px;
+    }
+    h1,h2,p {
+      text-shadow: 1px 1px 4px black;
+    }
+    #playMusic {
+      margin-top:20px;
+    }
+    img{
+      max-width:90%;
+      border-radius:15px;
+      margin-bottom:15px;
+    }
+    small{
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bgm" loop>
+  <source src="until-i-found-you.mp3" type="audio/mpeg">
+</audio>
+<button id="playMusic">تشغيل الموسيقى 🎵</button>
+<script>
+  const bgm = document.getElementById('bgm');
+  document.getElementById('playMusic').addEventListener('click', ()=>{
+    bgm.play();
+    document.getElementById('playMusic').style.display = 'none';
+  });
+</script>
+
+<!-- Page 1 -->
+<div class="page active" id="p1">
+  <h1>❤️ Our Love Story ❤️</h1>
+  <p>دي حكايتنا احنا</p>
+  <button onclick="go(2)">Start 💕</button>
+</div>
+
+<!-- Page 2: Countdown -->
+<div class="page" id="p2">
+  <h2>Time passed in our love ❤️</h2>
+  <div id="countdown" class="count"></div>
+  <button onclick="go(3)">Continue ❤️</button>
+</div>
+
+<!-- Page 3: Love Message -->
+<div class="page" id="p3">
+  <h2>منة بحبك 💖</h2>
+  <p>
+    يا منة، يا أجمل حاجة حصلتلي في الدنيا ❤️<br>
+    من أول يوم شوفتك فيه وأنا قلبي اختارك<br>
+    كل لحظة معاك ذكرى محفورة جوا قلبي
+  </p>
+  <button onclick="go(4)">المفاجأة 🎁</button>
+</div>
+
+<!-- Page 4: Password -->
+<div class="page" id="p4">
+  <div class="heart">❤️</div>
+  <h2>Enter Password</h2>
+  <input type="password" id="pass" placeholder="password">
+  <br>
+  <small style="color:#fff; text-shadow:1px 1px 3px black;">تلميح: اكتر حد بتحبيه ❤️</small>
+  <br><br>
+  <button onclick="check()">Unlock 💕</button>
+</div>
+
+<!-- Page 5: Memories (صور فقط) -->
+<div class="page" id="memories">
+  <h1 style="margin-bottom:20px; text-shadow:1px 1px 4px black;">زكرياتنا ❤️</h1>
+
+  <div style="margin-bottom:30px;">
+    <img src="love_image.jpg" alt="بحبك ❤️">
+    <p style="font-size:16px; color:white; text-shadow:1px 1px 4px black; line-height:1.5;">
+      أنى لي أن أجد في معاجم الجمال.. وصفك !<br>
+      فهل يَلدَم عاشق مثلي بحبك ؟<br>
+      "انا بعشقك"
+    </p>
+  </div>
+
+  <div>
+    <img src="eyes.jpg" alt="عينيك">
+    <p style="font-size:16px; color:white; text-shadow:1px 1px 4px black; line-height:1.5;">
+      في بَحْرِ عَيْنَيْكِ هَامَتْ كُلُّ أَشْوَاقِي يَا رَبَّةَ الْحُسْنِ، هَلْ تَنْوِينَ إِغْرَاقِي؟<br><br>
+      ما كُنتُ أُؤْمِنُ بِالْعُيُونِ وَفَعْلَهَا حَتَّى دَهَتْنِي فِي الْهَوَى عَيْنَاكِ<br><br>
+      عَيْنَاكِ بَحْرٌ تَاهَتْ بِهِ سُفْنِي وَتَزَعْزَعَتْ بِهِ نَبَضَاتُ قَلبي وَأَنْفَاسِي<br><br>
+      أَنَا الَّذِي لَا يَهْزُنِي بَرْقٌ وَلَا رَعْدٌ أَعَيْنَيْنِ مُتَلَالِئَةٌ تَهْزِمُ ثَبَاتِي؟
+    </p>
+  </div>
+
+  <div style="margin-top:20px;">
+    <img src="new_image1.jpg" alt="ذكريات 1">
+    <img src="new_image2.jpg" alt="ذكريات 2">
+    <img src="new_image3.jpg" alt="ذكريات 3">
+    <img src="new_image4.jpg" alt="ذكريات 4">
+  </div>
+
+  <button onclick="goVideo()">شوف الفيديو الخاص 🎬</button>
+</div>
+
+<!-- Page 6: Video Only -->
+<div class="page" id="videoPage">
+  <h1 style="margin-bottom:20px; text-shadow:1px 1px 4px black;">فيديو خاص ❤️</h1>
+  <video id="memVideo" width="90%" controls style="border-radius:15px;">
+    <source src="love_video.mp4" type="video/mp4">
+    متصفحك لا يدعم عرض الفيديو.
+  </video>
+</div>
+
+<script>
+// الانتقال بين الصفحات
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+n)?.classList.add('active');
+  document.getElementById('memories')?.classList.remove('active');
+  document.getElementById('videoPage')?.classList.remove('active');
+}
+
+// الانتقال لصفحة الفيديو من الذكريات
+function goVideo(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('videoPage').classList.add('active');
+}
+
+// Countdown in English
+const startDate = new Date(2026, 1, 1, 0, 0, 0); // Feb 1, 2026
+setInterval(()=>{
+  const now = new Date();
+  const diff = now - startDate;
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff/(1000*60*60))%24);
+  const m = Math.floor((diff/(1000*60))%60);
+  const s = Math.floor((diff/1000)%60);
+  document.getElementById('countdown').innerText = `${d} days ${h} hours ${m} minutes ${s} seconds`;
+},1000);
+
+// Password check
+function check(){ 
+  if(document.getElementById('pass').value === 'خالد'){ 
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('memories').classList.add('active');
+  }else{ 
+    alert('غلط 😅'); 
+  } 
+}
+
+// Video Fullscreen + Music control
+const video = document.getElementById('memVideo');
+video.addEventListener('play', ()=>{
+  bgm.pause();
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitEnterFullscreen) { // Safari iOS
+    video.webkitEnterFullscreen();
+  }
+});
+video.addEventListener('pause', ()=>{ bgm.play(); });
+video.addEventListener('ended', ()=>{ bgm.play(); });
+</script>
+
+</body>
+</html>
